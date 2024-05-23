@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ClassBaseResource" load_steps=2 format=3 uid="uid://be0ypsdpc4et5"]
+
+[ext_resource type="Script" path="res://stat_sheets/class_base_resource.gd" id="1_yg172"]
+
+[resource]
+script = ExtResource("1_yg172")
+character_name = "enemy"
+max_health = 100.0
+max_mana = 0.0
+max_rage = 0.0
+max_energy = 0.0
+armor = 20.0
+speed = 0.0

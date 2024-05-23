@@ -1,0 +1,63 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://d0gng51vh8u7e"
+path="res://.godot/imported/predator_prototype_merged.glb-66f0378e07f6747c3d3d7d21d0d6387a.scn"
+
+[deps]
+
+source_file="res://models/3d/characters/predator_prototype_merged.glb"
+dest_files=["res://.godot/imported/predator_prototype_merged.glb-66f0378e07f6747c3d3d7d21d0d6387a.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"materials": {
+"_defaultMat(Clone)": {
+"use_external/enabled": true,
+"use_external/path": "res://models/3d/characters/_defaultMat(Clone).tres"
+},
+"custom1(Clone)": {
+"use_external/enabled": true,
+"use_external/path": "res://models/3d/characters/custom1(Clone).tres"
+},
+"custom2(Clone)": {
+"use_external/enabled": true,
+"use_external/path": "res://models/3d/characters/custom2(Clone).tres"
+},
+"custom3(Clone)": {
+"use_external/enabled": true,
+"use_external/path": "res://models/3d/characters/custom3(Clone).tres"
+},
+"dark(Clone)": {
+"use_external/enabled": true,
+"use_external/path": "res://models/3d/characters/dark(Clone).tres"
+}
+},
+"nodes": {
+"PATH:mergedBlocks(Clone)": {
+"physics/body_type": 1,
+"physics/shape_type": 6,
+"primitive/height": 5.0,
+"primitive/position": Vector3(-0.5, 0, 0)
+}
+}
+}
+gltf/embedded_image_handling=1

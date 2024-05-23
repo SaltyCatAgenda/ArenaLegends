@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://78h1kd5edu1i"]
+
+[resource]
+resource_name = "custom3(Clone)"
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.93, 0.859, 0.387, 1)
+metallic = 0.5
+roughness = 0.85

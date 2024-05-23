@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://vxnv0jpri4bo"]
+
+[ext_resource type="Script" path="res://stat_sheets/projectile.gd" id="1_v2l1o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_movmx"]
+albedo_color = Color(0.337255, 0.901961, 1, 0.968627)
+
+[sub_resource type="SphereMesh" id="SphereMesh_sb4jj"]
+material = SubResource("StandardMaterial3D_movmx")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s1uc5"]
+radius = 0.3
+
+[node name="Projectile" type="Area3D"]
+script = ExtResource("1_v2l1o")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sb4jj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s1uc5")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -38,7 +38,7 @@ func reinit(stats: ClassBaseResource) -> void:
 	armor = stats.armor
 	speed = stats.speed
 	health = max_health
-	mana = max_mana / 1.0
+	mana = max_mana 
 	#resource_type = stats.resource_type
 	#print_debug(stats.ResourceType.keys()[resource_type])
 	
@@ -58,8 +58,8 @@ func create_resource(stats: ClassBaseResource) -> void:
 
 
 func take_damage(damage: float) -> void:
-	var reduction: float = clamp((1.0 - armor / 100.0 ), 0 , 1.0 )
-	var amount: float = get_health() - damage * reduction
+	var inv_reduction: float = clamp((1.0 - armor / 100.0 ), 0 , 1.0 )   # percentage of total damage let through
+	var amount: float = get_health() - damage * inv_reduction
 	set_health(amount)
 
 func set_health(new_health : float) -> void:
@@ -93,31 +93,31 @@ func set_rage(new_rage: int) -> void:
 func get_health() -> float:
 	return health
 	
-func get_mana() -> float:
+func get_mana() -> int:
 	return mana
 
-func get_energy() -> float:
+func get_energy() -> int:
 	return energy
 	
-func get_rage() -> float:
+func get_rage() -> int:
 	return rage
 	
 func kill() -> void:
 	pass
 
 func regen_mana() -> void:
-	var regen: float = 2.0
+	var regen: int = 2
 	if get_mana() < max_mana:
 		set_mana(get_mana() + regen)
 		print(get_mana())
 		
 func regen_energy() -> void:
-	var e_regen: float = 5.0
+	var e_regen: int = 5
 	if get_energy() < max_energy:
 		set_energy(get_energy() + e_regen)
 		
 func lose_rage() -> void:
-	var rage_loss: float = 1.5
+	var rage_loss: int = 2
 	# if out of combat for 6 seconds:
 	set_rage(get_rage() - rage_loss)
 

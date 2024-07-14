@@ -13,13 +13,13 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func input(event: InputEvent) -> BaseState:
+func input(_event: InputEvent) -> BaseState:
 	return null
 
-func process(delta: float) -> BaseState:
+func process(_delta: float) -> BaseState:
 	return null
 
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 	return null
 
 #func get_move_inp(event: InputEvent) -> Vector3:

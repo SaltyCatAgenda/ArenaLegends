@@ -1,54 +1,27 @@
-[gd_scene load_steps=36 format=3 uid="uid://0c314sjxxv5p"]
+[gd_scene load_steps=27 format=3 uid="uid://0c314sjxxv5p"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_smpb8"]
-[ext_resource type="Resource" uid="uid://dtxhlr47wy2va" path="res://stat_sheets/MageStats.tres" id="2_ekwyv"]
-[ext_resource type="PackedScene" uid="uid://cbkinsu7qknkk" path="res://models/3d/wand/wand1_test.glb" id="3_b0pm2"]
-[ext_resource type="PackedScene" uid="uid://b6jimcbf02vhu" path="res://models/3d/hunghung/HUNG_HUNG.glb" id="4_ba3we"]
-[ext_resource type="PackedScene" uid="uid://caxp5rbv538r5" path="res://models/3d/scimmy/Red_Scimmy_fr.glb" id="5_5rvlf"]
-[ext_resource type="PackedScene" uid="uid://d0gng51vh8u7e" path="res://models/3d/characters/predator_prototype_merged.glb" id="6_gyueu"]
-[ext_resource type="Texture2D" uid="uid://b3timjv32dku6" path="res://UI/Buttons/CoC_Test.png" id="7_jj3wo"]
-[ext_resource type="Script" path="res://button_cast_test.gd" id="8_woeu2"]
-[ext_resource type="Texture2D" uid="uid://dejqebsey2ox1" path="res://UI/HealthBars/whitebar.png" id="9_60ilv"]
-[ext_resource type="Texture2D" uid="uid://csjjyn4knwmya" path="res://UI/HealthBars/baroutline.png" id="10_557tk"]
-[ext_resource type="Script" path="res://Player/PlayerMana.gd" id="10_eoqg3"]
-[ext_resource type="Script" path="res://Player/PlayerHealth.gd" id="10_kan65"]
-[ext_resource type="Script" path="res://Player/cam_controller.gd" id="11_r8y3x"]
-[ext_resource type="Script" path="res://states/state_manager.gd" id="12_kcgn6"]
-[ext_resource type="Script" path="res://states/fall_state.gd" id="13_east3"]
-[ext_resource type="Script" path="res://states/idle_state.gd" id="14_tk5yn"]
-[ext_resource type="Script" path="res://states/move_state.gd" id="15_nyvk8"]
-[ext_resource type="Script" path="res://Player/dummy_toon.gd" id="16_ngbw3"]
-[ext_resource type="Script" path="res://states/jump_state.gd" id="16_ulv2j"]
-[ext_resource type="Script" path="res://class_stats.gd" id="18_epx5d"]
-[ext_resource type="Script" path="res://targeting.gd" id="21_65gne"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_04prh"]
+[ext_resource type="PackedScene" uid="uid://d0gng51vh8u7e" path="res://models/3d/characters/predator_prototype_merged.glb" id="2_q78gj"]
+[ext_resource type="Texture2D" uid="uid://b3timjv32dku6" path="res://UI/Buttons/CoC_Test.png" id="3_flhfk"]
+[ext_resource type="Script" path="res://button_cast_test.gd" id="4_kmplb"]
+[ext_resource type="Texture2D" uid="uid://dejqebsey2ox1" path="res://UI/HealthBars/whitebar.png" id="5_rcoqk"]
+[ext_resource type="Texture2D" uid="uid://csjjyn4knwmya" path="res://UI/HealthBars/baroutline.png" id="6_n0tre"]
+[ext_resource type="Script" path="res://Player/PlayerHealth.gd" id="7_m5ujf"]
+[ext_resource type="Script" path="res://Player/PlayerMana.gd" id="8_51vmm"]
+[ext_resource type="Script" path="res://Player/cam_controller.gd" id="9_e4dij"]
+[ext_resource type="Script" path="res://states/state_manager.gd" id="10_ixcfu"]
+[ext_resource type="Script" path="res://states/fall_state.gd" id="11_m37iv"]
+[ext_resource type="Script" path="res://states/idle_state.gd" id="12_po76d"]
+[ext_resource type="Script" path="res://states/move_state.gd" id="13_3srg5"]
+[ext_resource type="Script" path="res://states/jump_state.gd" id="14_82t8o"]
+[ext_resource type="Script" path="res://Player/dummy_toon.gd" id="15_yx0l1"]
+[ext_resource type="Resource" uid="uid://dtxhlr47wy2va" path="res://stat_sheets/resources/MageStats.tres" id="16_n5121"]
+[ext_resource type="Script" path="res://Player/class_stats.gd" id="17_1uqye"]
+[ext_resource type="Script" path="res://Player/targeting.gd" id="18_ng2fl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14a5y"]
 radius = 0.3
 height = 1.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pq583"]
-albedo_color = Color(0, 0.658824, 0.662745, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_asj0o"]
-material = SubResource("StandardMaterial3D_pq583")
-radius = 0.3
-height = 1.5
-
-[sub_resource type="BoxMesh" id="BoxMesh_0mswo"]
-size = Vector3(0.4, 0.2, 0.4)
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lvttw"]
-lifetime_randomness = 1.0
-emission_shape = 2
-emission_sphere_radius = 1.0
-gravity = Vector3(0, 1, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1iwjv"]
-albedo_color = Color(0.952941, 0.145098, 0, 1)
-
-[sub_resource type="PrismMesh" id="PrismMesh_udf8u"]
-material = SubResource("StandardMaterial3D_1iwjv")
-size = Vector3(0.02, 0.02, 0.02)
 
 [sub_resource type="Theme" id="Theme_1rg1c"]
 
@@ -96,7 +69,7 @@ bg_color = Color(0.811765, 0.478431, 0.643137, 1)
 
 [node name="Player" type="CharacterBody3D"]
 floor_constant_speed = true
-script = ExtResource("1_smpb8")
+script = ExtResource("1_04prh")
 
 [node name="Collider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -106,35 +79,7 @@ shape = SubResource("CapsuleShape3D_14a5y")
 
 [node name="Skin" type="Node3D" parent="PlayerPivot"]
 
-[node name="body" type="MeshInstance3D" parent="PlayerPivot/Skin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_asj0o")
-skeleton = NodePath("../../..")
-
-[node name="face" type="MeshInstance3D" parent="PlayerPivot/Skin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.08512, -0.256014)
-visible = false
-mesh = SubResource("BoxMesh_0mswo")
-
-[node name="wand1_test" parent="PlayerPivot/Skin" instance=ExtResource("3_b0pm2")]
-transform = Transform3D(0.909663, -1.45109, 1.82122, 0.470871, 2.02949, 1.38183, -2.28052, -0.159777, 1.01177, 0.451068, 0.705853, -0.342979)
-visible = false
-
-[node name="HUNG_HUNG" parent="PlayerPivot/Skin" instance=ExtResource("4_ba3we")]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.293692, 0.224161, -1.67724)
-visible = false
-
-[node name="Red_Scimmy_fr" parent="PlayerPivot/Skin" instance=ExtResource("5_5rvlf")]
-transform = Transform3D(-0.0204683, 0.0624586, 0.188891, -0.0204475, 0.188222, -0.0644531, -0.197896, -0.025908, -0.0128773, 0.155988, 0.643099, -0.489525)
-visible = false
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="PlayerPivot/Skin/Red_Scimmy_fr"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80031, 2.5301, 0.645164)
-process_material = SubResource("ParticleProcessMaterial_lvttw")
-draw_pass_1 = SubResource("PrismMesh_udf8u")
-
-[node name="predator_prototype_merged" parent="PlayerPivot/Skin" instance=ExtResource("6_gyueu")]
+[node name="predator_prototype_merged" parent="PlayerPivot/Skin" instance=ExtResource("2_q78gj")]
 transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0, 0.706, -0.2)
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -160,10 +105,10 @@ theme = SubResource("Theme_1rg1c")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tgciq")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ary0l")
 shortcut = SubResource("Shortcut_bwgm1")
-icon = ExtResource("7_jj3wo")
+icon = ExtResource("3_flhfk")
 icon_alignment = 1
 expand_icon = true
-script = ExtResource("8_woeu2")
+script = ExtResource("4_kmplb")
 
 [node name="Button4" type="Button" parent="UI/HBoxContainer"]
 layout_mode = 2
@@ -212,22 +157,22 @@ theme_override_constants/separation = 0
 [node name="PlayerHealth" type="TextureProgressBar" parent="UI/PlayerFrame"]
 layout_mode = 2
 value = 50.0
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
 tint_progress = Color(0.303135, 0.695953, 0.388788, 1)
-script = ExtResource("10_kan65")
+script = ExtResource("7_m5ujf")
 
 [node name="PlayerMana" type="TextureProgressBar" parent="UI/PlayerFrame"]
 layout_mode = 2
 value = 50.0
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
 tint_progress = Color(0.239216, 0.462745, 1, 1)
-script = ExtResource("10_eoqg3")
+script = ExtResource("8_51vmm")
 
 [node name="TargetFrame" type="VBoxContainer" parent="UI"]
 visible = false
@@ -247,9 +192,9 @@ theme_override_constants/separation = 0
 layout_mode = 2
 value = 50.0
 fill_mode = 1
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
 tint_progress = Color(0.303135, 0.695953, 0.388788, 1)
 
@@ -257,9 +202,9 @@ tint_progress = Color(0.303135, 0.695953, 0.388788, 1)
 layout_mode = 2
 value = 50.0
 fill_mode = 1
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
 tint_progress = Color(0.239216, 0.462745, 1, 1)
 
@@ -279,9 +224,9 @@ value = 50.0
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(0.603922, 0.168627, 1, 1)
 
@@ -291,9 +236,9 @@ value = 75.0
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(0.886275, 0.545098, 0.356863, 1)
 
@@ -303,9 +248,9 @@ value = 35.0
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(1, 0, 0.211765, 1)
 
@@ -330,9 +275,9 @@ fill_mode = 1
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(0.603922, 0.168627, 1, 1)
 
@@ -343,9 +288,9 @@ fill_mode = 1
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(0.886275, 0.545098, 0.356863, 1)
 
@@ -356,15 +301,15 @@ fill_mode = 1
 nine_patch_stretch = true
 stretch_margin_top = 29
 stretch_margin_bottom = 29
-texture_under = ExtResource("9_60ilv")
-texture_over = ExtResource("10_557tk")
-texture_progress = ExtResource("9_60ilv")
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
 tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
 tint_progress = Color(1, 0, 0.211765, 1)
 
 [node name="CamPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-script = ExtResource("11_r8y3x")
+script = ExtResource("9_e4dij")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CamPivot"]
 spring_length = 2.0
@@ -372,43 +317,41 @@ spring_length = 2.0
 [node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
 
 [node name="MovementMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state", "character")]
-script = ExtResource("12_kcgn6")
+script = ExtResource("10_ixcfu")
 starting_state = NodePath("MoveState")
 character = NodePath("..")
 
 [node name="FallState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("move_state", "idle_state")]
-script = ExtResource("13_east3")
+script = ExtResource("11_m37iv")
 move_state = NodePath("../MoveState")
 idle_state = NodePath("../IdleState")
 
 [node name="IdleState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state")]
-script = ExtResource("14_tk5yn")
+script = ExtResource("12_po76d")
 move_state = NodePath("../MoveState")
 fall_state = NodePath("../FallState")
 jump_state = NodePath("../JumpState")
 
 [node name="MoveState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("idle_state", "fall_state", "jump_state")]
-script = ExtResource("15_nyvk8")
+script = ExtResource("13_3srg5")
 idle_state = NodePath("../IdleState")
 fall_state = NodePath("../FallState")
 jump_state = NodePath("../JumpState")
 
 [node name="JumpState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("fall_state", "move_state")]
-script = ExtResource("16_ulv2j")
+script = ExtResource("14_82t8o")
 fall_state = NodePath("../FallState")
 move_state = NodePath("../MoveState")
 
 [node name="DummyToon" type="Node" parent="."]
-script = ExtResource("16_ngbw3")
-starting_stats = ExtResource("2_ekwyv")
+script = ExtResource("15_yx0l1")
+starting_stats = ExtResource("16_n5121")
 
 [node name="ClassStats" type="Node" parent="DummyToon"]
-script = ExtResource("18_epx5d")
+script = ExtResource("17_1uqye")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-
-[node name="Targeting" type="Node" parent="."]
-script = ExtResource("21_65gne")
+[node name="Targeting" type="Node3D" parent="."]
+script = ExtResource("18_ng2fl")
 
 [connection signal="health_updated" from="DummyToon/ClassStats" to="UI/PlayerFrame/PlayerHealth" method="_on_class_stats_health_updated"]
 [connection signal="mana_updated" from="DummyToon/ClassStats" to="UI/PlayerFrame/PlayerMana" method="_on_class_stats_mana_updated"]

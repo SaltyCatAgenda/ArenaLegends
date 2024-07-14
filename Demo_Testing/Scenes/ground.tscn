@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwc6ipkwh8j80"]
+
+[ext_resource type="Texture2D" uid="uid://dacqi6u250xnl" path="res://models/3d/wand/wand1_test_1.png" id="1_exfi7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xb8c5"]
+size = Vector3(100, 2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mi27a"]
+albedo_color = Color(1, 0.313726, 0.407843, 1)
+albedo_texture = ExtResource("1_exfi7")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_b6mat"]
+material = SubResource("StandardMaterial3D_mi27a")
+size = Vector3(100, 2, 100)
+
+[node name="Ground" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+input_ray_pickable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xb8c5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000352383, -1.19209e-07, -0.000312924)
+mesh = SubResource("BoxMesh_b6mat")

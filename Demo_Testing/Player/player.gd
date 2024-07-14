@@ -11,12 +11,15 @@ extends CharacterBody3D
 @onready var states: StateManager = $MovementMachine
 @onready var stats: ClassStats = $DummyToon/ClassStats
 
+@onready var targeting: Targeting = $Targeting
+@onready var target = null
+
 @onready var SPEED: float
 const default_speed : float = 4.0
 const ROT_SPEED : float  = 2.0
 const JUMP_VELOCITY : int = 5
 const gravity : int = 12
-const PROJ:=preload("res://stat_sheets/projectile.tscn")
+const PROJ:=preload("res://Scenes/projectile.tscn")
 
 
 func _ready() -> void:
@@ -32,6 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
+	target = targeting.set_target(self,target)
 	
 func _process(delta: float) -> void: 
 	states.process(delta)
@@ -42,4 +46,3 @@ func shoot() -> void:
 	get_parent().add_child(prj)
 	prj.global_transform = cam_pivot.global_transform
 	
-

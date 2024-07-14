@@ -5,12 +5,13 @@ class_name DummyToon
 
 @export var starting_stats: ClassBaseResource
 
+#@export var parent: Player
+
+@onready var parent = get_node("../")
+
 func _ready() -> void:
+	#print(parent)
+	parent.collision_layer=2  # sets the object to be targetable
 	stats.reinit(starting_stats)
-	add_to_group("targetable")
-	
 
 
-
-func _on_test_enemy_input_event(camera, event, position, normal, shape_idx):
-	pass # Replace with function body.

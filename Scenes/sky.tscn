@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://drq421eqraoao"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7lm0h"]
+
+[sub_resource type="Sky" id="Sky_vudxa"]
+sky_material = SubResource("ProceduralSkyMaterial_7lm0h")
+
+[sub_resource type="Environment" id="Environment_e8fe8"]
+background_mode = 2
+sky = SubResource("Sky_vudxa")
+tonemap_mode = 3
+
+[node name="Sky" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e8fe8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.971617, -0.198748, -0.128294, 0.0431519, -0.384325, 0.922189, -0.23259, -0.90155, -0.364841, -0.598025, 11.5423, 0)
+light_energy = 0.5
+shadow_enabled = true

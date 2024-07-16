@@ -1,0 +1,379 @@
+[gd_scene load_steps=30 format=3 uid="uid://0c314sjxxv5p"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_04prh"]
+[ext_resource type="PackedScene" uid="uid://d0gng51vh8u7e" path="res://models/3d/characters/predator_prototype_merged.glb" id="2_q78gj"]
+[ext_resource type="Shader" path="res://UI/outline.gdshader" id="3_dcerr"]
+[ext_resource type="Texture2D" uid="uid://b3timjv32dku6" path="res://UI/Buttons/CoC_Test.png" id="3_flhfk"]
+[ext_resource type="Script" path="res://button_cast_test.gd" id="4_kmplb"]
+[ext_resource type="Texture2D" uid="uid://dejqebsey2ox1" path="res://UI/HealthBars/whitebar.png" id="5_rcoqk"]
+[ext_resource type="Texture2D" uid="uid://csjjyn4knwmya" path="res://UI/HealthBars/baroutline.png" id="6_n0tre"]
+[ext_resource type="Script" path="res://Player/PlayerHealth.gd" id="7_m5ujf"]
+[ext_resource type="Script" path="res://Player/PlayerMana.gd" id="8_51vmm"]
+[ext_resource type="Script" path="res://Player/cam_controller.gd" id="9_e4dij"]
+[ext_resource type="Script" path="res://States/state_manager.gd" id="10_5yuth"]
+[ext_resource type="Script" path="res://States/fall_state.gd" id="11_fc2k4"]
+[ext_resource type="Script" path="res://States/idle_state.gd" id="12_rduth"]
+[ext_resource type="Script" path="res://States/move_state.gd" id="13_6llmf"]
+[ext_resource type="Script" path="res://States/jump_state.gd" id="14_gi7d2"]
+[ext_resource type="Script" path="res://Player/dummy_toon.gd" id="15_yx0l1"]
+[ext_resource type="Resource" uid="uid://dtxhlr47wy2va" path="res://Stat Sheets/resources/MageStats.tres" id="16_d8ctx"]
+[ext_resource type="Script" path="res://Player/class_stats.gd" id="17_1uqye"]
+[ext_resource type="Script" path="res://Player/targeting.gd" id="18_ng2fl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14a5y"]
+radius = 0.3
+height = 1.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yh6xp"]
+render_priority = 0
+shader = ExtResource("3_dcerr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrtwg"]
+next_pass = SubResource("ShaderMaterial_yh6xp")
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Theme" id="Theme_1rg1c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tgciq"]
+bg_color = Color(0, 0.6, 0.6, 1)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ary0l"]
+bg_color = Color(0.796078, 0.521569, 0.447059, 0.25098)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="InputEventKey" id="InputEventKey_xcbmp"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_bwgm1"]
+events = [SubResource("InputEventKey_xcbmp")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o38js"]
+draw_center = false
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.529412, 0.470588, 0.368627, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsq23"]
+bg_color = Color(0.811765, 0.478431, 0.643137, 1)
+
+[node name="Player" type="CharacterBody3D"]
+floor_constant_speed = true
+script = ExtResource("1_04prh")
+
+[node name="Collider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("CapsuleShape3D_14a5y")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="Skin" type="Node3D" parent="Pivot"]
+
+[node name="Model" parent="Pivot/Skin" instance=ExtResource("2_q78gj")]
+transform = Transform3D(-1.31134e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.31134e-08, 0, 0.706, -0.2)
+
+[node name="mergedBlocks(Clone)" parent="Pivot/Skin/Model" index="0"]
+material_overlay = SubResource("StandardMaterial3D_qrtwg")
+instance_shader_parameters/border_width = 0.06
+instance_shader_parameters/color = Color(0, 1, 0.254902, 1)
+instance_shader_parameters/line_movement = true
+instance_shader_parameters/line_movement_speed = 10.0
+instance_shader_parameters/line_number = 100.0
+instance_shader_parameters/line_sharpness = 1.7
+instance_shader_parameters/pattern = true
+instance_shader_parameters/strength = 0.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -60.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="Button3" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme = SubResource("Theme_1rg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tgciq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ary0l")
+shortcut = SubResource("Shortcut_bwgm1")
+icon = ExtResource("3_flhfk")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("4_kmplb")
+
+[node name="Button4" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_1rg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tgciq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ary0l")
+
+[node name="Button5" type="Button" parent="UI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_1rg1c")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tgciq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ary0l")
+
+[node name="CastBar" type="ProgressBar" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 206.0
+offset_right = 100.0
+offset_bottom = 239.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_o38js")
+theme_override_styles/fill = SubResource("StyleBoxFlat_lsq23")
+value = 50.0
+show_percentage = false
+
+[node name="PlayerFrame" type="VBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 126.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="PlayerHealth" type="TextureProgressBar" parent="UI/PlayerFrame"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
+tint_progress = Color(0.303135, 0.695953, 0.388788, 1)
+script = ExtResource("7_m5ujf")
+
+[node name="PlayerMana" type="TextureProgressBar" parent="UI/PlayerFrame"]
+layout_mode = 2
+value = 50.0
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
+tint_progress = Color(0.239216, 0.462745, 1, 1)
+script = ExtResource("8_51vmm")
+
+[node name="TargetFrame" type="VBoxContainer" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = 126.0
+offset_right = 256.0
+offset_bottom = 190.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/TargetFrame"]
+layout_mode = 2
+value = 50.0
+fill_mode = 1
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
+tint_progress = Color(0.303135, 0.695953, 0.388788, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="UI/TargetFrame"]
+layout_mode = 2
+value = 50.0
+fill_mode = 1
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.352941, 0.352941, 0.352941, 0.396078)
+tint_progress = Color(0.239216, 0.462745, 1, 1)
+
+[node name="FriendlyPartyBars" type="VBoxContainer" parent="UI"]
+visible = false
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -91.0
+offset_right = 256.0
+offset_bottom = 83.0
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/FriendlyPartyBars"]
+layout_mode = 2
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(0.603922, 0.168627, 1, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="UI/FriendlyPartyBars"]
+layout_mode = 2
+value = 75.0
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(0.886275, 0.545098, 0.356863, 1)
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="UI/FriendlyPartyBars"]
+layout_mode = 2
+value = 35.0
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(1, 0, 0.211765, 1)
+
+[node name="EnemyPartyBars" type="VBoxContainer" parent="UI"]
+visible = false
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -87.0
+offset_bottom = 87.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/EnemyPartyBars"]
+layout_mode = 2
+value = 50.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(0.603922, 0.168627, 1, 1)
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="UI/EnemyPartyBars"]
+layout_mode = 2
+value = 75.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(0.886275, 0.545098, 0.356863, 1)
+
+[node name="TextureProgressBar3" type="TextureProgressBar" parent="UI/EnemyPartyBars"]
+layout_mode = 2
+value = 35.0
+fill_mode = 1
+nine_patch_stretch = true
+stretch_margin_top = 29
+stretch_margin_bottom = 29
+texture_under = ExtResource("5_rcoqk")
+texture_over = ExtResource("6_n0tre")
+texture_progress = ExtResource("5_rcoqk")
+tint_under = Color(0.701961, 0.701961, 0.701961, 0.396078)
+tint_progress = Color(1, 0, 0.211765, 1)
+
+[node name="CamPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+script = ExtResource("9_e4dij")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CamPivot"]
+spring_length = 2.0
+
+[node name="Camera3D" type="Camera3D" parent="CamPivot/SpringArm3D"]
+
+[node name="MovementMachine" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("10_5yuth")
+starting_state = NodePath("MoveState")
+
+[node name="FallState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("move_state", "idle_state")]
+script = ExtResource("11_fc2k4")
+move_state = NodePath("../MoveState")
+idle_state = NodePath("../IdleState")
+
+[node name="IdleState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("move_state", "fall_state", "jump_state")]
+script = ExtResource("12_rduth")
+move_state = NodePath("../MoveState")
+fall_state = NodePath("../FallState")
+jump_state = NodePath("../JumpState")
+
+[node name="MoveState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("idle_state", "fall_state", "jump_state")]
+script = ExtResource("13_6llmf")
+idle_state = NodePath("../IdleState")
+fall_state = NodePath("../FallState")
+jump_state = NodePath("../JumpState")
+
+[node name="JumpState" type="Node" parent="MovementMachine" node_paths=PackedStringArray("fall_state", "move_state")]
+script = ExtResource("14_gi7d2")
+fall_state = NodePath("../FallState")
+move_state = NodePath("../MoveState")
+
+[node name="DummyToon" type="Node" parent="."]
+script = ExtResource("15_yx0l1")
+starting_stats = ExtResource("16_d8ctx")
+
+[node name="ClassStats" type="Node" parent="DummyToon"]
+script = ExtResource("17_1uqye")
+
+[node name="Targeting" type="Node3D" parent="."]
+script = ExtResource("18_ng2fl")
+
+[connection signal="health_updated" from="DummyToon/ClassStats" to="UI/PlayerFrame/PlayerHealth" method="_on_class_stats_health_updated"]
+[connection signal="mana_updated" from="DummyToon/ClassStats" to="UI/PlayerFrame/PlayerMana" method="_on_class_stats_mana_updated"]
+
+[editable path="Pivot/Skin/Model"]
